@@ -15,7 +15,11 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: (){},),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        tooltip: 'Nova anotação',
+        child: const Icon(Icons.note_add),
+      ),
       drawer: const DrawerWidget(),
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.white),
