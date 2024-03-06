@@ -1,7 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_annotation/models/keys_models.dart';
+import 'package:flutter_annotation/models/notes_model.dart';
 
 class Screen extends StatelessWidget {
-  const Screen({super.key});
+  Screen({super.key});
+
+  // Cria uma nota para testes
+  final notesModel = NotesModel(
+      id: '1',
+      title: 'Aniversário',
+      date: '2024-03-06 10:34:00',
+      content: 'Aniversário do André');
+
+// Cria uma lista de keys para testes
+  final List<KeysModel> keysList = [
+    KeysModel(
+      id: '1',
+      date: '2024-03-06 10:38:00',
+      noteId: '1',
+      keyValue: 'idade',
+    ),
+    KeysModel(
+      id: '2',
+      date: '2024-03-06 10:39:00',
+      noteId: '1',
+      keyValue: 'velho',
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
