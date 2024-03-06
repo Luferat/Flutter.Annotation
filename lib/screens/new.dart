@@ -10,21 +10,17 @@ class New extends StatefulWidget {
 class _NewState extends State<New> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: AppBar(
-        title: const Text('Nova Anotação'),
-        backgroundColor: Colors.green,
-      ),
-      body: const Center(
-        child: Text(
-          'Crie aqui',
-          style: TextStyle(
-            color: Colors.green,
-            fontSize: 25.0,
-          ),
+        iconTheme: const IconThemeData(color: Colors.white),
+        title: const Text(
+          "Nova Anotação",
+          style: TextStyle(color: Colors.white),
         ),
+        centerTitle: true,
+        backgroundColor: Colors.black,
       ),
+      body: const Text('Nova anotação...'),
     );
   }
 }
-
