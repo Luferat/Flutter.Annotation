@@ -1,78 +1,57 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_annotation/models/keys_models.dart';
-import 'package:flutter_annotation/models/notes_model.dart';
 
 class Screen extends StatelessWidget {
-  Screen({super.key});
-
-  // Cria uma nota para testes
-  final notesModel = NotesModel(
-      id: '1',
-      title: 'Aniversário',
-      date: '2024-03-06 10:34:00',
-      content: 'Aniversário do André');
-
-// Cria uma lista de keys para testes
-  final List<KeysModel> keysList = [
-    KeysModel(
-      id: '1',
-      date: '2024-03-06 10:38:00',
-      noteId: '1',
-      keyValue: 'idade',
-    ),
-    KeysModel(
-      id: '2',
-      date: '2024-03-06 10:39:00',
-      noteId: '1',
-      keyValue: 'velho',
-    ),
-  ];
+  const Screen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+          child: ListView(
+            children: [
+              const DrawerHeader(
+                decoration: BoxDecoration(color: Colors.green),
+                child: Text(
+                  "Menu",
+                  style: TextStyle(color: Colors.white, fontSize: 24.0),
+                ),
+              ),
+              ListTile(
+                title: const Text('Cálculo IMC'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Home()),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('Sobre o App'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Sobre()),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
       appBar: AppBar(
-        title: const Text("Bloco de Notas",
-            style: TextStyle(
-              color: Colors.white,
-            )),
         backgroundColor: Colors.black,
         centerTitle: true,
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print('Clicou');
-        },
-        child: const Icon(Icons.add),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text('Enviar foto'),
-            ),
-            const Text(
-              'Como fazer',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
-            ),
-            const Text('Explicação...'),
-            const Divider(),
-            const Text(
-              'Como me sinto',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
-            ),
-            const Text('Tudo bem')
-          ],
+        title: const Text(
+          'Bloco de Anotações',
+          style: TextStyle(color: Colors.white),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.refresh,
+            ),
+          ),
+        ],
       ),
     );
   }
