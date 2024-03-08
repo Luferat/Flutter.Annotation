@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import '../../database/database.dart';
 import 'package:flutter_annotation/functions/date.dart';
-import 'package:flutter_annotation/models/notes.dart';
+import 'package:flutter_annotation/screens/new.dart';
 import 'package:flutter_annotation/screens/view.dart';
 import 'package:flutter_annotation/widgets/drawer.dart';
 
@@ -16,7 +17,12 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const New()),
+          );
+        },
         tooltip: 'Nova anotação',
         child: const Icon(Icons.note_add),
       ),
@@ -35,15 +41,19 @@ class _HomeState extends State<Home> {
         itemBuilder: (context, index) {
           return ListTile(
             onTap: () {
-              // Carrega a página "AtracaoPage" no contexto atual usando "push()"
-              // Passa para "AtracaoPage" (atracao) o item clicado (listaAtracoes[index])
               Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          ViewNote(fullNote: notesList[index])));
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ViewNote(fullNote: notesList[index]),
+                ),
+              );
             },
-            title: Text(notesList[index].title),
+            title: Text(
+              notesList[index].title,
+              style: const TextStyle(
+                fontSize: 18,
+              ),
+            ),
             subtitle: Text(
               getFormattedDate(
                 notesList[index].date,
@@ -51,37 +61,23 @@ class _HomeState extends State<Home> {
                 "'Em' dd/MM/yyyy 'às' HH:mm",
               ),
               style: const TextStyle(
-                fontSize: 12,
+                fontSize: 14,
               ),
             ),
             leading: const Icon(Icons.description),
+            trailing: IconButton(
+              icon: const Icon(Icons.delete),
+              tooltip: 'Apagar esta anotação.',
+              onPressed: () {
+                // Apaga item correspondente
+                setState(() {
+                  notesList.removeAt(index);
+                });
+              },
+            ),
           );
         },
       ),
     );
   }
 }
-
-// Alguns dados somente para testes
-final List<NotesModel> notesList = [
-  NotesModel(
-      id: '1',
-      title: 'Primeira nota',
-      date: '2024-03-04 10:11:12',
-      content: 'Minha primeira anotação de teste'),
-  NotesModel(
-      id: '2',
-      title: 'Mais uma nota',
-      date: '2024-03-04 18:19:20',
-      content: 'Minha anotação importante'),
-  NotesModel(
-      id: '3',
-      title: 'Mais uma notinha',
-      date: '2024-03-06 09:10:11',
-      content: 'Essa é uma nota rápida'),
-  NotesModel(
-      id: '4',
-      title: 'Anotação inútil',
-      date: '2024-03-06 10:20:30',
-      content: 'Somente mais uma anotação para ser anotada'),
-];

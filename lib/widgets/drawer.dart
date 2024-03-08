@@ -81,7 +81,7 @@ class DrawerWidget extends StatelessWidget {
             ),
             // Açao do item
             onTap: () {
-              // FEcha o menu
+              // Fecha o menu
               Navigator.pop(context);
               // Sobrepõe a página da rota
               Navigator.push(
@@ -104,7 +104,9 @@ class DrawerWidget extends StatelessWidget {
               ),
             ),
             onTap: () {
+              // Fecha o menu
               Navigator.pop(context);
+              // Sobrepõe a página da rota
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const New()),
@@ -127,7 +129,7 @@ class DrawerWidget extends StatelessWidget {
               Navigator.pop(context);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const About()),
+                MaterialPageRoute(builder: (context) => About()),
               );
             },
           ),
