@@ -26,6 +26,7 @@ class _HomeState extends State<Home> {
         tooltip: 'Nova anotação',
         child: const Icon(Icons.note_add),
       ),
+      // Menu principal 'widgets/drawer.dart'
       drawer: const DrawerWidget(),
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.white),

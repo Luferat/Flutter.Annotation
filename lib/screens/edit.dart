@@ -54,27 +54,24 @@ class _EditNoteState extends State<EditNote> {
             const SizedBox(height: 16),
             TextFormField(
               controller: _contentController,
-              maxLines: null, // Permite várias linhas de texto
+              maxLines: null, // Isso permite várias linhas de texto no campo
               decoration: const InputDecoration(labelText: 'Conteúdo'),
             ),
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                // Atualiza os campos da nota com os valores dos controladores
+                // Atualiza os campos da nota com os valores do formulário
                 widget.fullNote.title = _titleController.text;
                 widget.fullNote.content = _contentController.text;
                 // Atualiza a data para a data atual
                 widget.fullNote.date = DateTime.now().toString();
-                // Salva as atualizações
-                // Por exemplo, você pode chamar uma função de salvamento aqui
-                // saveChanges(widget.fullNote);
-                // Depois de salvar, você pode retornar para a tela anterior
-                 Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ViewNote(fullNote: widget.fullNote),
-                ),
-              );
+                // Mostra a anotação atualizada
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ViewNote(fullNote: widget.fullNote),
+                  ),
+                );
               },
               child: const Text('Salvar'),
             ),

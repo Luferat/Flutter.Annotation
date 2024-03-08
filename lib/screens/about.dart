@@ -59,6 +59,7 @@ class About extends StatelessWidget {
     );
   }
 
+  // Abre a URL no navegador padrão
   Future<void> _launchUrl() async {
     const url = 'https://github.com/Luferat/Flutter.Annotation';
     if (!await launchUrl(Uri.parse(url))) {
